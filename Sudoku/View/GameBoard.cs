@@ -18,6 +18,7 @@ namespace Sudoku
         {
             InitializeComponent();
             gameManager = new Control.GameManager(this);
+            rBtnEasy.Checked = true;
         }
 
         private void btnStart_Click(object sender, EventArgs e)

@@ -26,7 +26,10 @@ namespace Sudoku.Control
         public void SaveFile(string outputPath)
         {
             dataManager.DownLoad(this, outputPath);
-            MessageBox.Show("This game is saved!");
+            if (outputPath != ".txt")
+                MessageBox.Show("This game is saved!");
+            else
+                MessageBox.Show("Enter file name!");
         }
         public void LoadFile(string inputPath)
         {
