@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku.Model
 {
-    public class DataManager
+    public class DataManager : IOException
     {
         public void UpLoad(Control.GameManager gameManager, String inputPath)
         {
@@ -58,9 +58,23 @@ namespace Sudoku.Model
                 }
             }
         }
-        public Boolean DownLoad(Control.GameManager gameManager, String outputPath)
+        public void DownLoad(Control.GameManager gameManager, String outputPath)
         {
-            return false;
+            FileStream fs = new FileStream(outputPath, FileMode.Create);
+            StreamWriter sWriter = new StreamWriter(fs, Encoding.UTF8);
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (j != 8)
+                        sWriter.Write(gameManager.sudoku.Cells[i, j].Value + " ");
+                    else
+                        sWriter.Write(gameManager.sudoku.Cells[i, j].Value.ToString());
+                }
+                sWriter.WriteLine();
+            }
+            sWriter.Flush();
+            fs.Close();
         }
         /*public String ReadFile(F)*/
     }

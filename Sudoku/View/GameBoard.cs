@@ -64,7 +64,8 @@ namespace Sudoku
         private void btnSave_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
-
+            string filePath = saveFileDialog1.FileName + ".txt";
+            gameManager.SaveFile(filePath);
         }
     }
 }

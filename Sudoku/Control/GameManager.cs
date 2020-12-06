@@ -13,7 +13,7 @@ namespace Sudoku.Control
     {
         public List<List<Button>> Matrix;
         public Sudoku sudoku;
-        GameBoard gameBoard;
+        public GameBoard gameBoard;
         private Model.DataManager dataManager;
 
         public GameManager(GameBoard gameBoard)
@@ -22,6 +22,11 @@ namespace Sudoku.Control
             sudoku = new Sudoku(this);
             CreateGameButton(this.gameBoard);
             dataManager = new Model.DataManager();
+        }
+        public void SaveFile(string outputPath)
+        {
+            dataManager.DownLoad(this, outputPath);
+            MessageBox.Show("This game is saved!");
         }
         public void LoadFile(string inputPath)
         {

@@ -295,7 +295,7 @@
         public System.Windows.Forms.Label lbMinutes;
         public System.Windows.Forms.Label lbHours;
         public System.Windows.Forms.Label lbSeconds;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
