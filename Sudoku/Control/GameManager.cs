@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,14 +14,42 @@ namespace Sudoku.Control
         public List<List<Button>> Matrix;
         public Sudoku sudoku;
         GameBoard gameBoard;
+        private Model.DataManager dataManager;
 
         public GameManager(GameBoard gameBoard)
         {
             this.gameBoard = gameBoard;
             sudoku = new Sudoku(this);
             CreateGameButton(this.gameBoard);
+            dataManager = new Model.DataManager();
         }
-
+        public void LoadFile(string inputPath)
+        {
+            dataManager.UpLoad(this, inputPath);
+            ClearGameBoard();
+            sudoku.SetReadOnly();
+            ShowCells();
+            sudoku.ResetTimePlay();
+            gameBoard.timerPlaying.Start();
+        }
+        public void TimeIsTick()
+        {
+            if (Convert.ToInt32(gameBoard.lbSeconds.Text) == 59)
+            {
+                sudoku.Minutes += 1;
+                gameBoard.lbMinutes.Text = sudoku.Minutes.ToString();
+                sudoku.Seconds = -1;
+            }
+            if (Convert.ToInt32(gameBoard.lbMinutes.Text) == 60)
+            {
+                sudoku.Hours += 1;
+                gameBoard.lbHours.Text = sudoku.Hours.ToString();
+                sudoku.Minutes = 0;
+                gameBoard.lbMinutes.Text = sudoku.Minutes.ToString();
+            }
+            sudoku.Seconds += 1;
+            gameBoard.lbSeconds.Text = sudoku.Seconds.ToString();
+        }
         public void NewGame(int level)
         {
             ClearGameBoard();
@@ -151,7 +180,7 @@ namespace Sudoku.Control
         public void EndGame()
         {
             gameBoard.timerPlaying.Stop();
-            MessageBox.Show("This game is solved!");
+            MessageBox.Show("Your achievements is: " + sudoku.Hours + ":" + sudoku.Minutes + ":" + sudoku.Seconds);
         }
         public void SolveGame()
         {

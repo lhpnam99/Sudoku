@@ -139,7 +139,6 @@ namespace Sudoku.Control
             {
                 for (int j = 0; j < 9; j++)
                 {
-
                     CellsRoot[i, j].CopyCell(Cells[i, j]);
                 }
             }
@@ -163,7 +162,7 @@ namespace Sudoku.Control
             ResetTimePlay();
         }
 
-        private void ResetTimePlay()
+        public void ResetTimePlay()
         {
             Hours = 0;
             Minutes = 0;

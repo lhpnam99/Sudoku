@@ -35,21 +35,7 @@ namespace Sudoku
 
         private void timerPlaying_Tick(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(lbSeconds.Text) == 59)
-            {
-                gameManager.sudoku.Minutes += 1;
-                lbMinutes.Text = gameManager.sudoku.Minutes.ToString();
-                gameManager.sudoku.Seconds = -1;
-            }
-            if (Convert.ToInt32(lbMinutes.Text) == 60)
-            {
-                gameManager.sudoku.Hours += 1;
-                lbHours.Text = gameManager.sudoku.Hours.ToString();
-                gameManager.sudoku.Minutes = 0;
-                lbMinutes.Text = gameManager.sudoku.Minutes.ToString();
-            }
-            gameManager.sudoku.Seconds += 1;
-            lbSeconds.Text = gameManager.sudoku.Seconds.ToString();
+            gameManager.TimeIsTick();
         }
 
         private void btnSolve_Click(object sender, EventArgs e)
@@ -71,7 +57,14 @@ namespace Sudoku
         private void btnLoadGame_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            lbFolderPath.Text = openFileDialog1.FileName.ToString();
+            gameManager.LoadFile(openFileDialog1.FileName);
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+
         }
     }
 }

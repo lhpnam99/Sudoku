@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.pnlGameBoard = new System.Windows.Forms.Panel();
             this.pnlControl = new System.Windows.Forms.Panel();
-            this.lbFolderPath = new System.Windows.Forms.Label();
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -51,6 +50,7 @@
             this.timerPlaying = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pnlControl.SuspendLayout();
             this.grpBoxLevel.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,6 @@
             // pnlControl
             // 
             this.pnlControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlControl.Controls.Add(this.lbFolderPath);
             this.pnlControl.Controls.Add(this.btnLoadGame);
             this.pnlControl.Controls.Add(this.btnSave);
             this.pnlControl.Controls.Add(this.btnHelp);
@@ -76,16 +75,6 @@
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.Size = new System.Drawing.Size(180, 217);
             this.pnlControl.TabIndex = 2;
-            // 
-            // lbFolderPath
-            // 
-            this.lbFolderPath.AutoSize = true;
-            this.lbFolderPath.Location = new System.Drawing.Point(3, 11);
-            this.lbFolderPath.MinimumSize = new System.Drawing.Size(40, 30);
-            this.lbFolderPath.Name = "lbFolderPath";
-            this.lbFolderPath.Size = new System.Drawing.Size(41, 30);
-            this.lbFolderPath.TabIndex = 5;
-            this.lbFolderPath.Text = " Path...";
             // 
             // btnLoadGame
             // 
@@ -105,6 +94,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnHelp
             // 
@@ -275,7 +265,6 @@
             this.Name = "GameBoard";
             this.Text = "Sudoku";
             this.pnlControl.ResumeLayout(false);
-            this.pnlControl.PerformLayout();
             this.grpBoxLevel.ResumeLayout(false);
             this.grpBoxLevel.PerformLayout();
             this.ResumeLayout(false);
@@ -294,10 +283,7 @@
         private System.Windows.Forms.Button btnStart;
         public System.Windows.Forms.Label lbSuggestions;
         private System.Windows.Forms.Label lbTimePlay;
-        private System.Windows.Forms.Label lbMinutes;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbHours;
-        private System.Windows.Forms.Label lbSeconds;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Timer timerPlaying;
         private System.Windows.Forms.Button btnHelp;
@@ -305,8 +291,11 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label lbFolderPath;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.Label lbMinutes;
+        public System.Windows.Forms.Label lbHours;
+        public System.Windows.Forms.Label lbSeconds;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
