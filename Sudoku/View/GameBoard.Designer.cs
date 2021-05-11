@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameBoard));
             this.pnlGameBoard = new System.Windows.Forms.Panel();
             this.pnlControl = new System.Windows.Forms.Panel();
             this.btnLoadGame = new System.Windows.Forms.Button();
@@ -51,6 +52,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.cbSuggestions = new System.Windows.Forms.CheckBox();
             this.pnlControl.SuspendLayout();
             this.grpBoxLevel.SuspendLayout();
             this.SuspendLayout();
@@ -71,14 +73,14 @@
             this.pnlControl.Controls.Add(this.btnHelp);
             this.pnlControl.Controls.Add(this.btnSolve);
             this.pnlControl.Controls.Add(this.btnStart);
-            this.pnlControl.Location = new System.Drawing.Point(483, 254);
+            this.pnlControl.Location = new System.Drawing.Point(483, 245);
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.Size = new System.Drawing.Size(180, 217);
             this.pnlControl.TabIndex = 2;
             // 
             // btnLoadGame
             // 
-            this.btnLoadGame.Location = new System.Drawing.Point(39, 44);
+            this.btnLoadGame.Location = new System.Drawing.Point(41, 35);
             this.btnLoadGame.Name = "btnLoadGame";
             this.btnLoadGame.Size = new System.Drawing.Size(109, 28);
             this.btnLoadGame.TabIndex = 4;
@@ -88,7 +90,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(39, 78);
+            this.btnSave.Location = new System.Drawing.Point(41, 69);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(109, 28);
             this.btnSave.TabIndex = 3;
@@ -98,7 +100,7 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(39, 112);
+            this.btnHelp.Location = new System.Drawing.Point(41, 103);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(109, 28);
             this.btnHelp.TabIndex = 2;
@@ -108,7 +110,7 @@
             // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(39, 146);
+            this.btnSolve.Location = new System.Drawing.Point(41, 137);
             this.btnSolve.Name = "btnSolve";
             this.btnSolve.Size = new System.Drawing.Size(109, 28);
             this.btnSolve.TabIndex = 1;
@@ -118,11 +120,11 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(39, 180);
+            this.btnStart.Location = new System.Drawing.Point(41, 171);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(109, 28);
             this.btnStart.TabIndex = 0;
-            this.btnStart.Text = "Start";
+            this.btnStart.Text = "New game";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -238,7 +240,7 @@
             // lbSuggestions
             // 
             this.lbSuggestions.AutoSize = true;
-            this.lbSuggestions.Location = new System.Drawing.Point(483, 225);
+            this.lbSuggestions.Location = new System.Drawing.Point(511, 221);
             this.lbSuggestions.Name = "lbSuggestions";
             this.lbSuggestions.Size = new System.Drawing.Size(71, 13);
             this.lbSuggestions.TabIndex = 4;
@@ -253,17 +255,29 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // cbSuggestions
+            // 
+            this.cbSuggestions.AutoSize = true;
+            this.cbSuggestions.Location = new System.Drawing.Point(493, 221);
+            this.cbSuggestions.Name = "cbSuggestions";
+            this.cbSuggestions.Size = new System.Drawing.Size(15, 14);
+            this.cbSuggestions.TabIndex = 5;
+            this.cbSuggestions.UseVisualStyleBackColor = true;
+            // 
             // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 474);
+            this.Controls.Add(this.cbSuggestions);
             this.Controls.Add(this.lbSuggestions);
             this.Controls.Add(this.grpBoxLevel);
             this.Controls.Add(this.pnlControl);
             this.Controls.Add(this.pnlGameBoard);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GameBoard";
             this.Text = "Sudoku";
+            this.Load += new System.EventHandler(this.GameBoard_Load);
             this.pnlControl.ResumeLayout(false);
             this.grpBoxLevel.ResumeLayout(false);
             this.grpBoxLevel.PerformLayout();
@@ -296,6 +310,7 @@
         public System.Windows.Forms.Label lbHours;
         public System.Windows.Forms.Label lbSeconds;
         public System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.CheckBox cbSuggestions;
     }
 }
 

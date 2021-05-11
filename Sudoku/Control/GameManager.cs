@@ -29,7 +29,7 @@ namespace Sudoku.Control
             if (outputPath != ".txt")
                 MessageBox.Show("This game is saved!");
             else
-                MessageBox.Show("Enter file name!");
+                MessageBox.Show("This game isn't saved!");
         }
         public void LoadFile(string inputPath)
         {
@@ -125,7 +125,8 @@ namespace Sudoku.Control
             btn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnKeyPress);
             btn.LostFocus += new System.EventHandler(this.btnLostFocus);
             Cell cell = btn.Tag as Cell;
-            ShowSuggestions(cell);
+            if(gameBoard.cbSuggestions.Checked)
+                ShowSuggestions(cell);
         }
         private void ShowSuggestions(Cell cell)
         {
@@ -229,6 +230,5 @@ namespace Sudoku.Control
         {
             return ((a.Value != 0 && b.Value != 0) && (a.Value == b.Value)) ? true : false;
         }
-        /*public String ReadFile*/
     }
 }

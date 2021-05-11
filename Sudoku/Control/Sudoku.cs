@@ -93,56 +93,6 @@ namespace Sudoku.Control
                 }
             }
         }
-        //Load sudoku
-        public void LoadFile(string input)
-        {
-            Clear();
-
-            char[] unwanted = new char[] { ' ' };
-            try
-            {
-
-                // Open the text file using a stream reader
-                using (var reader = new StreamReader(input))
-                {
-                    int row = 0;
-
-                    string line = reader.ReadLine();
-
-                    while (line != null)
-                    {
-                        int column = 0;
-                        string[] numbersString = line.Split(unwanted);
-                        foreach (string a in numbersString)
-                        {
-                            if (Int32.Parse(a) != 0)
-                            {
-                                Cells[row, column].Value = Int32.Parse(a);
-                                Cells[row, column].ReadOnly = true;
-                            }
-                            column++;
-                        }
-                        line = reader.ReadLine();
-                        row++;
-                    }
-                }
-                UpdatePossible();
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine("Không thể đọc file này :");
-                Console.WriteLine(e.Message);
-            }
-
-            SetReadOnly();
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    CellsRoot[i, j].CopyCell(Cells[i, j]);
-                }
-            }
-        }
 
         //New sudoku
         public void NewGame(int level)
@@ -344,8 +294,8 @@ namespace Sudoku.Control
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        do
-                        {
+                        //do
+                        //{
                             if (Cells[k + i, k + j].Possible.Count > 0)
                             {
                                 Random rand = new Random();
@@ -354,8 +304,8 @@ namespace Sudoku.Control
                                 UpdatePossible();
                             }
 
-                        }
-                        while (IsFeasible(Cells, k + i, k + j, Cells[k + i, k + j].Value));
+                        //}
+                        //while (IsFeasible(Cells, k + i, k + j, Cells[k + i, k + j].Value));
                     }
                 }
             }
